@@ -1,0 +1,51 @@
+#Coins available at change
+<html>
+<input type="file" name="file" id="file">
+</html>
+<script>
+
+var coinsAvailable =  [1,3, 5]; 
+
+var length = coinsAvailable.length; 
+var V = 0;
+
+document.getElementById('file').onchange = function(){
+
+  var file = this.files[0];
+
+  var reader = new FileReader();
+  reader.onload = function(progressEvent){
+
+    // By lines
+    var lines = this.result.split('\n');
+    V = lines[0];
+    minCoins(coinsAvailable, length, V);
+  };
+  reader.readAsText(file);
+};
+
+function minCoins(coinsAvailable,m,V) 
+{ 
+		var table = new Array()
+    table[V+1];
+  
+    table[0] = 0; 
+    for (var i=1; i<=V; i++)
+    {
+    table[i] = Number.MAX_SAFE_INTEGER; 
+    }
+        
+    for (var j = 1; j<=V; j++) 
+    { 
+        for (var k=0; k<m; k++) 
+          if (coinsAvailable[k] <= j) 
+          { 
+              var sub_res = table[j-coinsAvailable[k]]; 
+              if (sub_res != Number.MAX_SAFE_INTEGER && sub_res + 1 < table[j]) 
+                  table[j] = sub_res + 1; 
+          } 
+    } 
+    console.log(table[V]);
+    return table[V]; 
+}
+</script>
