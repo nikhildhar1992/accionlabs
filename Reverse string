@@ -1,0 +1,14 @@
+var reversedString = '';
+FirstReverse("sredoC dna dlroW olleH");
+function FirstReverse(str) {
+  reverseString(str, str.length - 1);
+  console.log(reversedString);
+}
+
+function reverseString(string, length) {
+  reversedString+=string[length];
+  if (length === 0) {
+    return reversedString;
+  }
+  reverseString(string, --length)
+}
