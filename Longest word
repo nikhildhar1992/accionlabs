@@ -1,0 +1,17 @@
+let wordLengthOfWord = new Array();
+LongestWord('Program to find longest word');
+
+function LongestWord(sen) {
+  var listOfWords = sen.split(" ");
+  wordLengthOfWord['wordLength'] = listOfWords[0].length;
+  wordLengthOfWord['word'] = listOfWords[0];
+    for (var i = 1; i < listOfWords.length; i++) {
+      if (listOfWords[i].length > wordLengthOfWord['wordLength']) {
+        wordLengthOfWord['wordLength'] = listOfWords[i].length;
+        wordLengthOfWord['word'] = listOfWords[i];
+      }
+    }
+    //alert(wordLengthOfWord['word']);
+    return wordLengthOfWord['word'];
+    
+}
